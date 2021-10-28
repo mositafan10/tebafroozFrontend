@@ -1,9 +1,9 @@
 const prod = {
     url: {
-     API_URL: "https://193.141.64.9"
+     API_URL: "http://185.239.104.161/"
     },
     name: {
-        title: "Billig"
+        title: "TAN"
     }
 }
 
@@ -12,7 +12,7 @@ const dev = {
      API_URL: "http://127.0.0.1:8000"
     },
     name: {
-        title: "Billig-test"
+        title: "TAN-test"
     }
 }
 
