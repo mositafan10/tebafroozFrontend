@@ -71,7 +71,7 @@ function Statice() {
           <Container>
             <Col>
               <Card >
-                <div>
+                {/* <div>
                   <p>
                     The <code>numbered</code> prop can be used to opt into
                     numbered list group items.
@@ -83,7 +83,7 @@ function Statice() {
                     <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
                     <ListGroupItem>Vestibulum at eros</ListGroupItem>
                   </ListGroup>
-                </div>
+                </div> */}
               </Card>
             </Col>
           </Container>
