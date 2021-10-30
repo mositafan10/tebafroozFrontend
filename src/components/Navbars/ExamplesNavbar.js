@@ -102,13 +102,18 @@ function ExamplesNavbar() {
           >
             <Nav navbar>
               <NavItem>
-                <NavLink to="/" >
+                <NavLink href="/" >
                   تولید
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/">
-                  انبار
+                <NavLink href="/packing">
+                  بسته بندی
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/statice">
+                  آمار
                 </NavLink>
               </NavItem>
             </Nav>

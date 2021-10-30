@@ -30,13 +30,16 @@ import "./index.css"
 // import Index from "views/Index.js";
 // import NucleoIcons from "views/NucleoIcons.js";
 import LoginPage from "views/examples/LoginPage.js";
-// import LandingPage from "views/examples/LandingPage.js";
+import Packing from "views/examples/Packing.js";
+import Statice from "views/examples/Statice.js";
 // import ProfilePage from "views/examples/ProfilePage.js";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Switch>
+        <Route path="/packing" render={(props) => <Packing {...props} />} />
+        <Route path="/statice" render={(props) => <Statice {...props} />} />
         <Route path="/" render={(props) => <LoginPage {...props} />} />
         <Redirect to="/" />
         <Redirect from="/index" to="/" />
