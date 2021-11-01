@@ -20,6 +20,8 @@ import {
 import { DatePicker } from "jalali-react-datepicker";
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
+import moment from "jalali-moment"; // reactstrap components
+
 
 import { config } from "../../Constant";
 var url = config.url.API_URL;
@@ -29,6 +31,7 @@ function Packing() {
   const [lastFocus, setLastFocus] = React.useState(false);
   const [users, setUsers] = React.useState([]);
   const [products, setProducts] = React.useState([]);
+  const [productions, setProductions] = React.useState([]);
   const [date, setDate] = React.useState("");
   const [finish, setFinish] = React.useState(false);
   const [error, setError] = React.useState("");
@@ -40,17 +43,21 @@ function Packing() {
     axios.get(`${url}/products/`).then((res) => {
       setProducts(res.data);
     });
+    axios.get(`${url}/products/productions/`).then((res) => {
+      setProductions(res.data);
+    });
   };
 
   const sendForm = (data) => {
     data.preventDefault();
 
     axios
-      .post(`${url}/products/packing/`, {
+      .post(`${url}/products/packings/`, {
         user: data.target.user.value,
         product: data.target.product.value,
         number: data.target.number.value,
-        created: date,
+        production: data.target.production.value,
+        created_at: date ? moment(date).format("YYYY-MM-DD") : moment().format("YYYY-MM-DD"),
       })
       .then(() => {
         setFinish(true);
@@ -150,11 +157,32 @@ function Packing() {
                       }
                     >
                       <Input
+                        style={{ fontFamily: "Vazir" }}
+                        type="select"
+                        name="production"
+                        placeholder="سری تولید"
+                        onFocus={() => setLastFocus(true)}
+                        onBlur={() => setLastFocus(false)}
+                      >
+                        {productions.map((e) => (
+                          <option key={e.name} value={e.id}>
+                            {e.batch}
+                          </option>
+                        ))}
+                      </Input>
+                    </InputGroup>
+                    <InputGroup
+                      className={
+                        "no-border input-lg" +
+                        (lastFocus ? " input-group-focus" : "")
+                      }
+                    >
+                      <Input
                         style={{ fontFamily: "VazirD" }}
                         name="number"
                         required
                         type="tel"
-                        placeholder="تعداد تولید شده"
+                        placeholder="تعداد بسته‌بندی شده"
                         onFocus={() => setLastFocus(true)}
                         onBlur={() => setLastFocus(false)}
                       ></Input>

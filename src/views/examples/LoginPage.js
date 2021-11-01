@@ -18,6 +18,8 @@ import {
   Spinner,
 } from "reactstrap";
 import { DatePicker } from "jalali-react-datepicker";
+import moment from "jalali-moment"; // reactstrap components
+
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 
@@ -44,13 +46,13 @@ function LoginPage() {
 
   const sendForm = (data) => {
     data.preventDefault();
-
+    console.log(moment().format("YYYY-MM-DD"));
     axios
-      .post(`${url}/products/production/`, {
+      .post(`${url}/products/productions/`, {
         user: data.target.user.value,
         product: data.target.product.value,
         number: data.target.number.value,
-        created: date,
+        created_at: date ? moment(date).format("YYYY-MM-DD") : moment().format("YYYY-MM-DD"),
       })
       .then(() => {
         setFinish(true);

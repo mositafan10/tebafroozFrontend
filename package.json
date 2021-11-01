@@ -9,6 +9,7 @@
     "axios": "^0.21.4",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.9",
+    "jalali-moment": "^3.3.10",
     "jalali-react-datepicker": "^1.2.1",
     "moment": "2.29.1",
     "node-sass": "6.0.0",
