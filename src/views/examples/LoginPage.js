@@ -36,7 +36,7 @@ function LoginPage() {
   const [error, setError] = React.useState("");
 
   const getData = () => {
-    axios.get(`${url}/account/users/`).then((res) => {
+    axios.get(`${url}/products/operators/`).then((res) => {
       setUsers(res.data);
     });
     axios.get(`${url}/products/`).then((res) => {
@@ -52,7 +52,9 @@ function LoginPage() {
         user: data.target.user.value,
         product: data.target.product.value,
         number: data.target.number.value,
-        created_at: date ? moment(date).format("YYYY-MM-DD") : moment().format("YYYY-MM-DD"),
+        created_at: date
+          ? moment(date).format("YYYY-MM-DD")
+          : moment().format("YYYY-MM-DD"),
       })
       .then(() => {
         setFinish(true);
@@ -118,8 +120,12 @@ function LoginPage() {
                         onBlur={() => setFirstFocus(false)}
                       >
                         {users.map((e) => (
-                          <option key={e.username} value={e.id}>
-                            {e.username}
+                          <option
+                            key={e.id}
+                            value={e.id}
+                            style={{ color: "red", backgroundColor:"red" }}
+                          >
+                            {e.name}
                           </option>
                         ))}
                       </Input>
@@ -139,8 +145,8 @@ function LoginPage() {
                         onBlur={() => setLastFocus(false)}
                       >
                         {products.map((e) => (
-                          <option key={e.name} value={e.id}>
-                            {e.name}
+                          <option key={e.id} value={e.id}>
+                            {e.full_name}
                           </option>
                         ))}
                       </Input>

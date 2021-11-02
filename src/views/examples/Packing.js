@@ -37,7 +37,7 @@ function Packing() {
   const [error, setError] = React.useState("");
 
   const getData = () => {
-    axios.get(`${url}/account/users/`).then((res) => {
+    axios.get(`${url}/products/operators/`).then((res) => {
       setUsers(res.data);
     });
     axios.get(`${url}/products/`).then((res) => {
@@ -123,8 +123,8 @@ function Packing() {
                         onBlur={() => setFirstFocus(false)}
                       >
                         {users.map((e) => (
-                          <option key={e.username} value={e.id}>
-                            {e.username}
+                          <option key={e.id} value={e.id}>
+                            {e.name}
                           </option>
                         ))}
                       </Input>
@@ -144,8 +144,8 @@ function Packing() {
                         onBlur={() => setLastFocus(false)}
                       >
                         {products.map((e) => (
-                          <option key={e.name} value={e.id}>
-                            {e.name}
+                          <option key={e.id} value={e.id}>
+                            {e.full_name}
                           </option>
                         ))}
                       </Input>
@@ -160,6 +160,7 @@ function Packing() {
                         style={{ fontFamily: "Vazir" }}
                         type="select"
                         name="production"
+                        required
                         placeholder="سری تولید"
                         onFocus={() => setLastFocus(true)}
                         onBlur={() => setLastFocus(false)}
