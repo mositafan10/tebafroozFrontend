@@ -39,7 +39,7 @@ function Statice() {
   const [dateEnd, setDateEnd] = React.useState("");
 
   const getData = () => {
-    axios.get(`${url}/account/users/`).then((res) => {
+    axios.get(`${url}/products/operators/`).then((res) => {
       setUsers(res.data);
     });
     axios.get(`${url}/products/`).then((res) => {
@@ -131,8 +131,6 @@ function Statice() {
                         <td>{dateStart}</td>
                         <td>{dateEnd}</td>
                         <td>{result.count ? result.count : 0}</td>
-                        {/* <td>{result.count ? result.count : 0}</td>
-                        <td>{result.count ? result.count : 0}</td> */}
                       </tr>
                     </tbody>
                   </Table>
@@ -166,8 +164,10 @@ function Statice() {
                         onBlur={() => setFirstFocus(false)}
                       >
                         {users.map((e) => (
-                          <option key={e.username} value={e.username}>
-                            {e.username}
+                          <option key={e.id} value={e.name}
+                          style={{ color: "#000", backgroundColor:"#FFF" }}
+                          >
+                            {e.name}
                           </option>
                         ))}
                       </Input>
@@ -187,8 +187,10 @@ function Statice() {
                         onBlur={() => setLastFocus(false)}
                       >
                         {products.map((e) => (
-                          <option key={e.id} value={e.id}>
-                            {e.name}
+                          <option key={e.id} value={e.id}
+                          style={{ color: "#000", backgroundColor:"#FFF" }}
+                          >
+                            {e.full_name}
                           </option>
                         ))}
                       </Input>
@@ -211,7 +213,9 @@ function Statice() {
                         <option key="1" value="prod">
                           تولید
                         </option>
-                        <option key="2" value="pack">
+                        <option key="2" value="pack"
+                        style={{ color: "#000", backgroundColor:"#FFF" }}
+                        >
                           بسته‌بندی
                         </option>
                       </Input>
