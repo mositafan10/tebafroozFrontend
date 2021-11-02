@@ -66,7 +66,7 @@ function Statice() {
       .then((res) => {
         setProducer(data.target.user.value);
         setType(data.target.type.value)
-        setProduct(products[data.target.product.value - 1].name);
+        setProduct(products[data.target.product.value - 1].full_name);
         setDateStart(moment(date.start).locale("fa").format("YYYY/MM/DD"));
         setDateEnd(moment(date.end).locale("fa").format("YYYY/MM/DD"));
         setResult(res.data);
