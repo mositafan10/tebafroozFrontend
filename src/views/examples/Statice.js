@@ -53,7 +53,7 @@ function Statice() {
     setLoading(true);
     axios
       .post(`${url}/products/statice/`, {
-        user: { username: data.target.user.value },
+        user: { name: data.target.user.value },
         product: { id: data.target.product.value },
         type: data.target.type.value,
         date_from: date.start
