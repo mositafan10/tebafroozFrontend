@@ -123,7 +123,7 @@ function LoginPage() {
                           <option
                             key={e.id}
                             value={e.id}
-                            style={{ color: "red", backgroundColor:"red" }}
+                            style={{ color: "#000", backgroundColor:"#FFF" }}
                           >
                             {e.name}
                           </option>
@@ -145,7 +145,9 @@ function LoginPage() {
                         onBlur={() => setLastFocus(false)}
                       >
                         {products.map((e) => (
-                          <option key={e.id} value={e.id}>
+                          <option key={e.id} value={e.id}
+                          style={{ color: "#000", backgroundColor:"#FFF" }}
+                          >
                             {e.full_name}
                           </option>
                         ))}

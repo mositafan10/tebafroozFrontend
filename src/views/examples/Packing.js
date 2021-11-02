@@ -144,7 +144,9 @@ function Packing() {
                         onBlur={() => setLastFocus(false)}
                       >
                         {products.map((e) => (
-                          <option key={e.id} value={e.id}>
+                          <option key={e.id} value={e.id}
+                          style={{ color: "#000", backgroundColor:"#FFF" }}
+                          >
                             {e.full_name}
                           </option>
                         ))}
@@ -166,7 +168,9 @@ function Packing() {
                         onBlur={() => setLastFocus(false)}
                       >
                         {productions.map((e) => (
-                          <option key={e.name} value={e.id}>
+                          <option key={e.name} value={e.id}
+                          style={{ color: "#000", backgroundColor:"#FFF" }}
+                          >
                             {e.batch}
                           </option>
                         ))}
