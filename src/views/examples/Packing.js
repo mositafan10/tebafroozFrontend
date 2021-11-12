@@ -50,14 +50,13 @@ function Packing() {
 
   const sendForm = (data) => {
     data.preventDefault();
-
     axios
       .post(`${url}/products/packings/`, {
         user: data.target.user.value,
         product: data.target.product.value,
         number: data.target.number.value,
         production: data.target.production.value,
-        created_at: date ? moment(date).format("YYYY-MM-DD") : moment().format("YYYY-MM-DD"),
+        created_at: date.value ? moment(date.value).format("YYYY-MM-DD") : moment().format("YYYY-MM-DD"),
       })
       .then(() => {
         setFinish(true);
@@ -194,6 +193,7 @@ function Packing() {
                     </InputGroup>
                     <DatePicker
                       onClickSubmitButton={(value) => setDate(value)}
+                      timePicker={false}
                     />
                   </CardBody>
                   <CardFooter className="text-center">

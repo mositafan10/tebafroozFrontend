@@ -46,14 +46,13 @@ function LoginPage() {
 
   const sendForm = (data) => {
     data.preventDefault();
-    console.log(moment().format("YYYY-MM-DD"));
     axios
       .post(`${url}/products/productions/`, {
         user: data.target.user.value,
         product: data.target.product.value,
         number: data.target.number.value,
-        created_at: date
-          ? moment(date).format("YYYY-MM-DD")
+        created_at: date.value
+          ? moment(date.value).format("YYYY-MM-DD")
           : moment().format("YYYY-MM-DD"),
       })
       .then(() => {
@@ -170,7 +169,11 @@ function LoginPage() {
                       ></Input>
                     </InputGroup>
                     <DatePicker
-                      onClickSubmitButton={(value) => setDate(value)}
+                      onClickSubmitButton={(value) => {
+                        setDate(value);
+                      }
+                    }
+                      timePicker={false}
                     />
                   </CardBody>
                   <CardFooter className="text-center">

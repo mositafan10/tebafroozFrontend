@@ -57,10 +57,10 @@ function Statice() {
         product: { id: data.target.product.value },
         type: data.target.type.value,
         date_from: date.start
-          ? moment(date.start, "fa", "YYYY/MM/DD").format("YYYY-MM-DD")
+          ? moment(date.start).format("YYYY-MM-DD")
           : moment().format("YYYY-MM-DD"),
         date_to: date.end
-          ? moment(date.end, "fa", "YYYY/MM/DD").format("YYYY-MM-DD")
+          ? moment(date.end).format("YYYY-MM-DD")
           : moment().format("YYYY-MM-DD"),
       })
       .then((res) => {
@@ -120,8 +120,6 @@ function Statice() {
                         <th>از تاریخ</th>
                         <th>تا تاریخ</th>
                         <th>کل تولید</th>
-                        {/* <th>میزان ضایعات</th>
-                        <th>میانگین روزانه</th> */}
                       </tr>
                     </thead>
                     <tbody>
