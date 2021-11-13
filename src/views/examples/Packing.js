@@ -53,7 +53,7 @@ function Packing() {
     axios
       .post(`${url}/products/packings/`, {
         user: data.target.user.value,
-        product: data.target.product.value,
+        // product: data.target.product.value,
         number: data.target.number.value,
         production: data.target.production.value,
         created_at: date.value ? moment(date.value).format("YYYY-MM-DD") : moment().format("YYYY-MM-DD"),
@@ -128,7 +128,7 @@ function Packing() {
                         ))}
                       </Input>
                     </InputGroup>
-                    <InputGroup
+                    {/* <InputGroup
                       className={
                         "no-border input-lg" +
                         (lastFocus ? " input-group-focus" : "")
@@ -150,7 +150,7 @@ function Packing() {
                           </option>
                         ))}
                       </Input>
-                    </InputGroup>
+                    </InputGroup> */}
                     <InputGroup
                       className={
                         "no-border input-lg" +
