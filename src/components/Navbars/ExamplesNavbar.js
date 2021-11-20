@@ -102,12 +102,12 @@ function ExamplesNavbar() {
           >
             <Nav navbar>
               <NavItem>
-                <NavLink href="/product1" >
+                <NavLink href="/first-product" >
                   تولید ۱
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/product2" >
+                <NavLink href="/second-product" >
                   تولید ۲
                 </NavLink>
               </NavItem>

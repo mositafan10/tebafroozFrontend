@@ -39,8 +39,8 @@ ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Switch>
-        <Route path="/product1" render={(props) => <LoginPage {...props} />} />
-        <Route path="/product2" render={(props) => <SecondProduct {...props} />} />
+        <Route path="/first-product" render={(props) => <LoginPage {...props} />} />
+        <Route path="/second-product" render={(props) => <SecondProduct {...props} />} />
         <Route path="/packing" render={(props) => <Packing {...props} />} />
         <Route path="/statice" render={(props) => <Statice {...props} />} />
         <Redirect to="/product1" />
