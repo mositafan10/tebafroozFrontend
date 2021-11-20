@@ -31,6 +31,7 @@ import "./index.css"
 // import NucleoIcons from "views/NucleoIcons.js";
 import LoginPage from "views/examples/LoginPage.js";
 import Packing from "views/examples/Packing.js";
+import SecondProduct from "views/examples/SecondProduct.js";
 import Statice from "views/examples/Statice.js";
 // import ProfilePage from "views/examples/ProfilePage.js";
 
@@ -38,11 +39,12 @@ ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Switch>
+        <Route path="/product1" render={(props) => <LoginPage {...props} />} />
+        <Route path="/product2" render={(props) => <SecondProduct {...props} />} />
         <Route path="/packing" render={(props) => <Packing {...props} />} />
         <Route path="/statice" render={(props) => <Statice {...props} />} />
-        <Route path="/" render={(props) => <LoginPage {...props} />} />
-        <Redirect to="/" />
-        <Redirect from="/index" to="/" />
+        <Redirect to="/product1" />
+        <Redirect from="/index" to="/product1" />
       </Switch>
     </Switch>
   </BrowserRouter>,

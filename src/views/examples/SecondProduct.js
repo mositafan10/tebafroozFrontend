@@ -16,53 +16,48 @@ import {
   ToastHeader,
   ToastBody,
   Spinner,
-  Label,
 } from "reactstrap";
 import { DatePicker } from "jalali-react-datepicker";
-import moment from "jalali-moment"; // reactstrap components
-
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
+import moment from "jalali-moment"; // reactstrap components
+
 
 import { config } from "../../Constant";
 var url = config.url.API_URL;
 
-function LoginPage() {
+function Packing() {
   const [firstFocus, setFirstFocus] = React.useState(false);
   const [lastFocus, setLastFocus] = React.useState(false);
   const [users, setUsers] = React.useState([]);
-  const [products, setProducts] = React.useState([]);
+  const [productions, setProductions] = React.useState([]);
   const [date, setDate] = React.useState("");
   const [finish, setFinish] = React.useState(false);
   const [error, setError] = React.useState("");
-  const [nextStep, setNextStep] = React.useState(false);
 
   const getData = () => {
     axios.get(`${url}/products/operators/`).then((res) => {
       setUsers(res.data);
     });
-    axios.get(`${url}/products/`).then((res) => {
-      setProducts(res.data);
+    axios.get(`${url}/products/productions/1/`).then((res) => {
+      setProductions(res.data);
     });
   };
 
   const sendForm = (data) => {
     data.preventDefault();
     axios
-      .post(`${url}/products/productions/1/`, {
+      .post(`${url}/products/packings/`, {
         user: data.target.user.value,
-        product: data.target.product.value,
         number: data.target.number.value,
-        has_next_step: nextStep,
-        created_at: date.value
-          ? moment(date.value).format("YYYY-MM-DD")
-          : moment().format("YYYY-MM-DD"),
+        production: data.target.production.value,
+        created_at: date.value ? moment(date.value).format("YYYY-MM-DD") : moment().format("YYYY-MM-DD"),
       })
       .then(() => {
         setFinish(true);
-        // setTimeout(() => {
-        //   window.location.reload();
-        // }, 2000);
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       })
       .catch((error) => {
         console.log(error.response.data);
@@ -104,7 +99,7 @@ function LoginPage() {
                           src={require("assets/img/now-logo.png").default}
                           ></img>
                       </div> */}
-                    <p>ثبت آمار تولید مرحله ۱</p>
+                    <p>ثبت آمار تولید مرحله ۲</p>
                   </CardHeader>
                   <CardBody>
                     <InputGroup
@@ -122,11 +117,7 @@ function LoginPage() {
                         onBlur={() => setFirstFocus(false)}
                       >
                         {users.map((e) => (
-                          <option
-                            key={e.id}
-                            value={e.id}
-                            style={{ color: "#000", backgroundColor: "#FFF" }}
-                          >
+                          <option key={e.id} value={e.id}>
                             {e.name}
                           </option>
                         ))}
@@ -141,18 +132,17 @@ function LoginPage() {
                       <Input
                         style={{ fontFamily: "Vazir" }}
                         type="select"
-                        name="product"
-                        placeholder="محصول"
+                        name="production"
+                        required
+                        placeholder="تولید اولیه"
                         onFocus={() => setLastFocus(true)}
                         onBlur={() => setLastFocus(false)}
                       >
-                        {products.map((e) => (
-                          <option
-                            key={e.id}
-                            value={e.id}
-                            style={{ color: "#000", backgroundColor: "#FFF" }}
+                        {productions.map((e) => (
+                          <option key={e.name} value={e.id}
+                          style={{ color: "#000", backgroundColor:"#FFF" }}
                           >
-                            {e.full_name}
+                            {e.batch}
                           </option>
                         ))}
                       </Input>
@@ -173,26 +163,8 @@ function LoginPage() {
                         onBlur={() => setLastFocus(false)}
                       ></Input>
                     </InputGroup>
-                    <InputGroup
-                      className={
-                        "no-border input-lg" +
-                        (lastFocus ? " input-group-focus" : "")
-                      }
-                    >
-                       <Label style={{marginRight:"30px"}} check for="next_step">
-                        مرحله دوم تولید 
-                      </Label>
-                      <Input
-                        name="next_step"
-                        id="next_step"
-                        type="checkbox"
-                        onChange={() => {nextStep ? setNextStep(false) : setNextStep(true)}}
-                      ></Input>
-                    </InputGroup>
                     <DatePicker
-                      onClickSubmitButton={(value) => {
-                        setDate(value);
-                      }}
+                      onClickSubmitButton={(value) => setDate(value)}
                       timePicker={false}
                     />
                   </CardBody>
@@ -231,4 +203,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default Packing;

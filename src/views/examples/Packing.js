@@ -40,10 +40,7 @@ function Packing() {
     axios.get(`${url}/products/operators/`).then((res) => {
       setUsers(res.data);
     });
-    axios.get(`${url}/products/`).then((res) => {
-      setProducts(res.data);
-    });
-    axios.get(`${url}/products/productions/`).then((res) => {
+    axios.get(`${url}/products/productions/2/`).then((res) => {
       setProductions(res.data);
     });
   };
@@ -53,7 +50,6 @@ function Packing() {
     axios
       .post(`${url}/products/packings/`, {
         user: data.target.user.value,
-        // product: data.target.product.value,
         number: data.target.number.value,
         production: data.target.production.value,
         created_at: date.value ? moment(date.value).format("YYYY-MM-DD") : moment().format("YYYY-MM-DD"),
@@ -128,29 +124,6 @@ function Packing() {
                         ))}
                       </Input>
                     </InputGroup>
-                    {/* <InputGroup
-                      className={
-                        "no-border input-lg" +
-                        (lastFocus ? " input-group-focus" : "")
-                      }
-                    >
-                      <Input
-                        style={{ fontFamily: "Vazir" }}
-                        type="select"
-                        name="product"
-                        placeholder="محصول"
-                        onFocus={() => setLastFocus(true)}
-                        onBlur={() => setLastFocus(false)}
-                      >
-                        {products.map((e) => (
-                          <option key={e.id} value={e.id}
-                          style={{ color: "#000", backgroundColor:"#FFF" }}
-                          >
-                            {e.full_name}
-                          </option>
-                        ))}
-                      </Input>
-                    </InputGroup> */}
                     <InputGroup
                       className={
                         "no-border input-lg" +
